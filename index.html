@@ -1,117 +1,68 @@
-<!DOCTYPE html>
-<html lang="id">
+<script>
+for (let i = 0; i < 35; i++) {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+  document.querySelector(".falling-hearts").appendChild(heart);
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine 💖</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+function showLove() {
+  document.getElementById("surprise").classList.toggle("show");
+}
 
-<body>
+/* Easter eggs */
+let tapCount = 0;
+const hero = document.querySelector(".hero");
 
-    <div class="falling-hearts"></div>
+hero.addEventListener("click", () => {
+  tapCount++;
+  if (tapCount === 5) {
+    alert("saat orang lain memiliki hari kasih sayang untuk di rayakan, aku punya setiap hari untuk menyayangimu meski tidak ku ucapkan");
+    tapCount = 0;
+  }
+});
 
-    <section class="hero">
-        <h1>Happy Valentine </h1>
-        <h2>Siva Rensiana</h2>
-    </section>
+let pressTimer;
+document.body.addEventListener("touchstart", () => {
+  pressTimer = setTimeout(() => {
+    alert("💞 BOOM LOVE YOU 💞");
+  }, 800);
+});
+document.body.addEventListener("touchend", () => clearTimeout(pressTimer));
 
-    <section class="story">
-        <p>
-            i just want you to know that loving you is my favorite part of ever day. i'm grateful for you, always.
-        </p>
-    </section>
+let secret = "";
+document.addEventListener("keydown", e => {
+  secret += e.key.toLowerCase();
+  if (secret.includes("siva")) {
+    alert("🌹 ndut ndut nduttt 🌹");
+    secret = "";
+  }
+});
 
-    <section class="love-box">
-        <span>🌹</span>
-        <p>Bunga ini aku kasihhh buat cipaaaa</p>
-    </section>
+/* flower explode */
+document.querySelector(".love-btn").addEventListener("click", e => {
+  const flowers = ["🌸","🌺","🌷","💐","🌹","🌼"];
+  for (let i = 0; i < 18; i++) {
+    const flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
 
-    <button class="love-btn" onclick="showLove()">Jangan Ditekan ❗</button>
+    const angle = Math.random() * 360;
+    const distance = 80 + Math.random() * 60;
 
-    <div id="surprise" class="hidden">
-        💕 lopee youuu ndutttt 💕
-    </div>
-    
-<button id="musicBtn">🎵</button>
+    flower.style.setProperty("--x", Math.cos(angle * Math.PI/180)*distance+"px");
+    flower.style.setProperty("--y", Math.sin(angle * Math.PI/180)*distance+"px");
 
-    <audio id="bgMusic" loop>
-        <source src="love.mp3" type="audio/mpeg">
-    </audio>
-    <footer>
-        
-        @RYN🧸ྀི
-    </footer>
+    flower.style.left = e.clientX+"px";
+    flower.style.top = e.clientY+"px";
 
-    <script>
-        for (let i = 0; i < 35; i++) {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = (3 + Math.random() * 5) + "s";
-            document.querySelector(".falling-hearts").appendChild(heart);
-        }
+    document.body.appendChild(flower);
+    setTimeout(()=>flower.remove(),1200);
+  }
+});
 
-        function showLove() {
-            document.getElementById("surprise").classList.toggle("show");
-        }
-
-        /* 🎁 Easter Egg System */
-
-        let tapCount = 0;
-        const hero = document.querySelector(".hero");
-
-        hero.addEventListener("click", () => {
-            tapCount++;
-            if (tapCount === 5) {
-                alert("saat orang lain memiliki hari kasih sayang untuk di rayakan, aku punya setiap hari untuk menyayangimu meski tidak ku ucapkan");
-                tapCount = 0;
-            }
-        });
-
-        let pressTimer;
-        document.body.addEventListener("touchstart", () => {
-            pressTimer = setTimeout(() => {
-                alert("💞 BOOM LOVE YOU 💞");
-            }, 800);
-        });
-
-        document.body.addEventListener("touchend", () => {
-            clearTimeout(pressTimer);
-        });
-
-        let secret = "";
-        document.addEventListener("keydown", e => {
-            secret += e.key.toLowerCase();
-            if (secret.includes("siva")) {
-                alert("🌹 ndut ndut nduttt 🌹");
-                secret = "";
-            }
-        });
-        document.querySelector(".love-btn").addEventListener("click", e => {
-            const flowers = ["🌸", "🌺", "🌷", "💐", "🌹", "🌼"];
-
-            for (let i = 0; i < 18; i++) {
-                const flower = document.createElement("div");
-                flower.className = "flower";
-                flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-
-                const angle = Math.random() * 360;
-                const distance = 80 + Math.random() * 60;
-
-                flower.style.setProperty("--x", Math.cos(angle * Math.PI / 180) * distance + "px");
-                flower.style.setProperty("--y", Math.sin(angle * Math.PI / 180) * distance + "px");
-
-                flower.style.left = e.clientX + "px";
-                flower.style.top = e.clientY + "px";
-
-                document.body.appendChild(flower);
-
-                setTimeout(() => flower.remove(), 1200);
-            }
-        });
-        <script>
+/* 🎵 music toggle */
 const music = document.getElementById("bgMusic");
 const btn = document.getElementById("musicBtn");
 
@@ -125,10 +76,3 @@ btn.addEventListener("click", () => {
   }
 });
 </script>
-
-        
-    </script>
-
-</body>
-
-</html>
