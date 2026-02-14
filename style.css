@@ -175,3 +175,22 @@ footer {
     opacity: 0;
   }
 }
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  background: pink;
+  border: none;
+  border-radius: 50%;
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255,105,180,0.6);
+  z-index: 999;
+  transition: transform 0.3s;
+}
+
+#musicBtn:hover {
+  transform: scale(1.2);
+}
+
