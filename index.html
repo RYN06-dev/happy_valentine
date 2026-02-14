@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="falling-hearts"></div>
+
+    <section class="hero">
+        <h1>💕Happy Valentine 💕</h1>
+        <h2>Siva Rensiana</h2>
+    </section>
+
+    <section class="story">
+        <p>
+            i just want you to know that loving you is my favorite part of ever day. i'm grateful for you, always.
+        </p>
+    </section>
+
+    <section class="love-box">
+        <span>🌹</span>
+        <p>Bunga ini aku kasihhh buat cipaaaa</p>
+    </section>
+
+    <button class="love-btn" onclick="showLove()">Klik Aku 💖</button>
+
+    <div id="surprise" class="hidden">
+        💕 lopee youuu ndutttt 💕
+    </div>
+
+    <footer>
+        @RYN🧸ྀི
+    </footer>
+
+    <script>
+        for (let i = 0; i < 35; i++) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+            document.querySelector(".falling-hearts").appendChild(heart);
+        }
+
+        function showLove() {
+            const s = document.getElementById("surprise");
+            s.classList.toggle("show");
+        }
+    </script>
+
+</body>
+
+</html>
