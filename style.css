@@ -155,3 +155,23 @@ footer {
     opacity: 1;
     transform: scale(1);
 }
+.flower {
+  position: fixed;
+  font-size: 22px;
+  pointer-events: none;
+  animation: flowerBoom 1.2s ease-out forwards;
+}
+
+@keyframes flowerBoom {
+  0% {
+    transform: scale(0) translate(0,0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.4) translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
