@@ -48,9 +48,41 @@
         }
 
         function showLove() {
-            const s = document.getElementById("surprise");
-            s.classList.toggle("show");
+            document.getElementById("surprise").classList.toggle("show");
         }
+
+        /* 🎁 Easter Egg System */
+
+        let tapCount = 0;
+        const hero = document.querySelector(".hero");
+
+        hero.addEventListener("click", () => {
+            tapCount++;
+            if (tapCount === 5) {
+                alert("💖 Rahasia: Kamu adalah alasan aku selalu bahagia 💖");
+                tapCount = 0;
+            }
+        });
+
+        let pressTimer;
+        document.body.addEventListener("touchstart", () => {
+            pressTimer = setTimeout(() => {
+                alert("💞 BOOM LOVE YOU 💞");
+            }, 800);
+        });
+
+        document.body.addEventListener("touchend", () => {
+            clearTimeout(pressTimer);
+        });
+
+        let secret = "";
+        document.addEventListener("keydown", e => {
+            secret += e.key.toLowerCase();
+            if (secret.includes("siva")) {
+                alert("🌹 ndut ndut nduttt 🌹");
+                secret = "";
+            }
+        });
     </script>
 
 </body>
